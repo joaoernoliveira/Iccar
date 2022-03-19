@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Japuacu.Blog.Aplicacao.ViewModels.PostVM>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Categories Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Períodos Anteriores</h5>
+                <div class="card-body">
+
+                    <div class="mb-4">
+                        <label for="txtMes" class="form-label">Mês</label>
+                        <div class="input-group ">
+                            <select id="txtMes" class="form-control" style="width=100%">
+                                <option value="1">Janeiro/2022</option>
+                                <option value="2">Dezembro/2021</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <button class="btn btn-secondary" type="button">Ir !</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Blog Entries Column -->
+        
+        <div class="col-md-8">
+
+            @foreach (var item in Model)
+            {
+                 <!-- Blog Post -->
+                <div class="card mb-4">
+                    <img class="card-img-top" src="~/imagens/@item.ImagemPost" alt="Card image cap" height="400" width="300">
+                    <div class="card-body">
+                        <h2 class="card-title">@item.TituloPost</h2>
+                        <p class="card-text">@item.ResumoPost</p>
+                        <a asp-action="Post" asp-route-id="@item.Id" class="btn btn-primary">Leia mais &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Postado em @item.DataPost por
+                        <a href="index1.html">@item.Autor.Nome </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->

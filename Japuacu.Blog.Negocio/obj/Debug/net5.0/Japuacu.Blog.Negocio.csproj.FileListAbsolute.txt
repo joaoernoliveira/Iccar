@@ -1,0 +1,12 @@
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\bin\Debug\net5.0\Japuacu.Blog.Negocio.deps.json
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\bin\Debug\net5.0\Japuacu.Blog.Negocio.dll
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\bin\Debug\net5.0\ref\Japuacu.Blog.Negocio.dll
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\bin\Debug\net5.0\Japuacu.Blog.Negocio.pdb
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.csproj.AssemblyReference.cache
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.AssemblyInfoInputs.cache
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.AssemblyInfo.cs
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.csproj.CoreCompileInputs.cache
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.dll
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\ref\Japuacu.Blog.Negocio.dll
+D:\Japuacu\Blog\Japuacu.Blog.Negocio\obj\Debug\net5.0\Japuacu.Blog.Negocio.pdb

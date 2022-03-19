@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Japuacu.Blog.Aplicacao.ViewModels.PostVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TituloPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ResumoPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terminado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/imagens/@item.ImagemPost" alt="@item.ImagemPost" style="width: 90px; height: 80px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TituloPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResumoPost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

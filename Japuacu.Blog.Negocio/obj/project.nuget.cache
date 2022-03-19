@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vNhJTl+sfyG4CKFpL6tvIC61/UzkWmCR15ekNdRT0RNV4Ow5+NGYD3pZWYDuTJFdYG7hx/FLJFQEhs8a3CUpYw==",
+  "success": true,
+  "projectFilePath": "D:\\Japuacu\\Blog\\Japuacu.Blog.Negocio\\Japuacu.Blog.Negocio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\João\\.nuget\\packages\\fluentvalidation\\10.3.3\\fluentvalidation.10.3.3.nupkg.sha512"
+  ],
+  "logs": []
+}
