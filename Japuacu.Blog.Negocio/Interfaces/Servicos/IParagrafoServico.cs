@@ -13,6 +13,7 @@ namespace Japuacu.Blog.Negocio.Interfaces.Servicos
         Task Alterar(Paragrafo Paragrafo);
         Task Excluir(Paragrafo Paragrafo);
         Task<Paragrafo> PorId(int id);
+
         Task<IEnumerable<Paragrafo>> ParagrafosPorPost(Post post);
     }
 }

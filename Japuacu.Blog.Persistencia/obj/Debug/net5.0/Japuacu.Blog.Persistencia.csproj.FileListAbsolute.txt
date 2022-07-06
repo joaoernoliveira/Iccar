@@ -2,7 +2,6 @@ D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Persiste
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Persistencia.runtimeconfig.json
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Persistencia.runtimeconfig.dev.json
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Persistencia.dll
-D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\ref\Japuacu.Blog.Persistencia.dll
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Persistencia.pdb
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Negocio.dll
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\bin\Debug\net5.0\Japuacu.Blog.Negocio.pdb
@@ -16,3 +15,4 @@ D:\Japuacu\Blog\Japuacu.Blog.Persistencia\obj\Debug\net5.0\Japuacu.Blog.Persiste
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\obj\Debug\net5.0\ref\Japuacu.Blog.Persistencia.dll
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\obj\Debug\net5.0\Japuacu.Blog.Persistencia.pdb
 D:\Japuacu\Blog\Japuacu.Blog.Persistencia\obj\Debug\net5.0\Japuacu.Blog.Persistencia.genruntimeconfig.cache
+D:\Japuacu\Blog\Japuacu.Blog.Persistencia\obj\Debug\net5.0\refint\Japuacu.Blog.Persistencia.dll

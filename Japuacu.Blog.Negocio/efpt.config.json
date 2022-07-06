@@ -28,9 +28,13 @@
       {
          "Name": "[dbo].[Post]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Usuario]",
+         "ObjectType": 0
       }
    ],
-   "UiHint": "desktop-2cu4hvv\\sqlexpress.Blog.dbo",
+   "UiHint": "DESKTOP-2CU4HVV\\SQLEXPRESS.Blog",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDbContextSplitting": false,

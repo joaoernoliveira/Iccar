@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xsEz2Wg6yhsOAtQzgx0Ycl58W3VwAx9dckXaiA5lLtxhZsBsdzyj7czcS1EsaZJTsob4fr2lBUBxAsZaowGDHw==",
+  "dgSpecHash": "VP2g7r5wMnaJxQ5ySzzIR555Zw7XhW8xJgYhig+P04MH0patUqhTDC2kMVUVp3D7aQL7mYpq1Do/t4Bn3Nx6ZQ==",
   "success": true,
   "projectFilePath": "D:\\Japuacu\\Blog\\Japuacu.Blog.Aplicacao\\Japuacu.Blog.Aplicacao.csproj",
   "expectedPackageFiles": [
@@ -130,7 +130,8 @@
     "C:\\Users\\João\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\João\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\João\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\João\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\João\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\João\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
   ],
   "logs": []
 }

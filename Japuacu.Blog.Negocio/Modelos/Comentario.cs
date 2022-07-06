@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Japuacu.Blog.Negocio.Modelos
 {
-    public partial class Comentario : EntidadeModelo
+    public partial class Comentario: EntidadeModelo
     {
         public int Id { get; set; }
         public int PostId { get; set; }

@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Japuacu.Blog.Negocio\Japuacu.Blog.Negocio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Contexto\" />
-  </ItemGroup>
-
 </Project>

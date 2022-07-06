@@ -14,5 +14,8 @@ namespace Japuacu.Blog.Negocio.Interfaces.Repositorios
         public Task<List<Post>> TodosComAutorParagrafos();
 
         public  Task<List<Post>> TodosComAutorParagrafosComentarios();
+
+        //Task<List<Post>> TodosAntigos();
+
     }
 }

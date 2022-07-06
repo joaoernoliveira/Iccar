@@ -28,8 +28,39 @@ namespace Japuacu.Blog.Aplicacao.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(_mapper.Map<IEnumerable<PostVM>>(await _postServico.Todos()));
-           
+            var listaAnteriores = new List<Anteriores>();  
+
+            foreach (var item in await _postServico.TodosResumoAnteriores())
+            {
+                listaAnteriores.Add(new Anteriores() {Chave = item, Valor = item }); 
+            }
+
+            ViewBag.aneriores = listaAnteriores;
+             
+            return View(_mapper.Map<IEnumerable<PostVM>>(await _postServico.TodosDeUmMesAno(0, 0)));           
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(string periodo = "0")
+        {
+            int mes = 0;
+            int ano = 0;
+
+
+            if (periodo != null)
+            {
+                mes = int.Parse( periodo.Length == 6 ?  periodo.Substring(0,1): periodo.Substring(0, 2));
+                ano = int.Parse(periodo.Length == 6 ? periodo.Substring(2, 4) : periodo.Substring(3, 4));
+            }
+            
+            var listaAnteriores = new List<Anteriores>();
+
+            foreach (var item in await _postServico.TodosResumoAnteriores())
+            {
+                listaAnteriores.Add(new Anteriores() { Chave = item, Valor = item });
+            }
+
+            ViewBag.aneriores = listaAnteriores;
+            return View(_mapper.Map<IEnumerable<PostVM>>(await _postServico.TodosDeUmMesAno(ano, mes)));
         }
 
         public async Task<IActionResult> Post(int id)
@@ -48,5 +79,11 @@ namespace Japuacu.Blog.Aplicacao.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+
+    public class Anteriores
+    {
+        public string Chave { get; set; }
+        public string Valor { get; set; }
     }
 }

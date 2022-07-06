@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Japuacu.Blog.Negocio.Modelos;
-using Japuacu.Blog.Persistencia.Contexto;
-using Japuacu.Blog.Negocio.Servicos;
-using Japuacu.Blog.Negocio.Interfaces.Servicos;
-using AutoMapper;
-using Japuacu.Blog.Negocio.Interfaces.Notificacoes;
+﻿using AutoMapper;
 using Japuacu.Blog.Aplicacao.ViewModels;
+using Japuacu.Blog.Negocio.Interfaces.Notificacoes;
+using Japuacu.Blog.Negocio.Interfaces.Servicos;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Japuacu.Blog.Aplicacao.Controllers
 {
+    [Authorize]
     public class PostController : BaseController
     {
         private readonly  IPostServico _postServico;
@@ -32,30 +28,45 @@ namespace Japuacu.Blog.Aplicacao.Controllers
 
         // GET: Post
         public async Task<IActionResult> Index()
-        {
-            
+        {            
             return View( _mapper.Map<IEnumerable<PostVM >>(await _postServico.Todos()));
+        }
+
+        public async Task<IActionResult> RelatorioDePostsPorAutores()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync("https://localhost:44381/Post/PostsPorAutor");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    HttpContent content = response.Content;
+                    var contentStream = await content.ReadAsStreamAsync();
+
+                    return File(contentStream, "application/pdf", "PostsPorAutor.pdf");
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
 
         }
 
-        //// GET: Post/Details/5
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
 
-        //    var post = await _context.Posts
-        //        .Include(p => p.Autor)
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (post == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // GET: Post/Details/5
+        public async Task<IActionResult> Details(int id)
+        {
 
-        //    return View(post);
-        //}
+            var post = await _postServico.PorId(id);
+                
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(_mapper.Map<PostVM>(post));
+        }
 
         //// GET: Post/Create
         //public IActionResult Create()

@@ -3,12 +3,16 @@ using Japuacu.Blog.Aplicacao.ViewModels;
 using Japuacu.Blog.Negocio.Interfaces.Notificacoes;
 using Japuacu.Blog.Negocio.Interfaces.Servicos;
 using Japuacu.Blog.Negocio.Modelos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Japuacu.Blog.Aplicacao.Controllers
 {
+    [Authorize]
     public class AutorController : BaseController
     {
         private readonly IAutorServico _autorServico;
@@ -23,9 +27,38 @@ namespace Japuacu.Blog.Aplicacao.Controllers
         }
 
 
+        public async Task<IActionResult> RelatorioDeAutores()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync("https://localhost:44381/Autor/ListagemAutor");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    HttpContent content = response.Content;
+                    var contentStream = await content.ReadAsStreamAsync();
+
+                    return File(contentStream, "application/pdf", "ListagemAutor.pdf");
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+        }
+
+
         // GET: Autor
         public async Task<IActionResult> Index()
         {
+            var usuarioRequest = HttpContext.User.Identity.Name;
+            var usuarioController = this.User.Identity.Name;
+
+            var caminhoController = this.Url.ActionContext.RouteData.Values["Controller"];
+            var caminhoAction = this.Url.ActionContext.RouteData.Values["Action"];
+
+
             return View(_mapper.Map<IEnumerable<AutorVM>>(await _autorServico.Todos()));
 
         }
@@ -138,5 +171,8 @@ namespace Japuacu.Blog.Aplicacao.Controllers
             var autor = _mapper.Map<AutorVM>(await _autorServico.PorId(id));
             return autor;
         }
+
+
+       
     }
 }

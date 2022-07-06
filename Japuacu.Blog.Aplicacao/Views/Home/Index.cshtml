@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<Japuacu.Blog.Aplicacao.ViewModels.PostVM>
 
 @{
+
     ViewData["Title"] = "Home Page";
 }
 
-
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!-- Page Content -->
 <div class="container">
 
@@ -19,17 +22,16 @@
                 <div class="card-body">
 
                     <div class="mb-4">
-                        <label for="txtMes" class="form-label">Mês</label>
+                        <label for="txtMes" class="form-label">Mês/Ano</label>
                         <div class="input-group ">
-                            <select id="txtMes" class="form-control" style="width=100%">
-                                <option value="1">Janeiro/2022</option>
-                                <option value="2">Dezembro/2021</option>
+                            <select id="Anteriores" class="form-control" asp-items="@(new SelectList(ViewBag.aneriores, "Chave", "Valor"))">
+                                <option></option>
                             </select>
                         </div>
                     </div>
 
                     <div class="input-group">
-                        <button class="btn btn-secondary" type="button">Ir !</button>
+                        <button class="btn btn-secondary" type="button" id="btnIr">Ir !</button>
                     </div>
                 </div>
             </div>
@@ -37,12 +39,12 @@
 
 
         <!-- Blog Entries Column -->
-        
+
         <div class="col-md-8">
 
             @foreach (var item in Model)
             {
-                 <!-- Blog Post -->
+                <!-- Blog Post -->
                 <div class="card mb-4">
                     <img class="card-img-top" src="~/imagens/@item.ImagemPost" alt="Card image cap" height="400" width="300">
                     <div class="card-body">
@@ -62,3 +64,26 @@
 
 </div>
 <!-- /.container -->
+@section Scripts {
+    <script>
+
+
+        $("#btnIr").click(function () {
+
+
+
+            var anterior = $('#Anteriores option:selected').text();
+
+            var url = '/Home/Index?periodo=' + anterior;
+            var form = $('<form action="' + url + '" method="post">' +
+                '<input type="text" name="api_url" value="Return_URL" />' +
+                '</form>');
+            $('body').append(form);
+            $(form).submit();
+
+
+
+        });
+
+    </script>
+}

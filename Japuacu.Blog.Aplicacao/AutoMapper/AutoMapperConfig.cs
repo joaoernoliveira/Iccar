@@ -16,6 +16,7 @@ namespace Japuacu.Blog.Aplicacao.AutoMapper
             CreateMap<Comentario, ComentarioVM>().ReverseMap();
             CreateMap<Paragrafo, ParagrafoVM>().ReverseMap();
             CreateMap<Post, PostVM>().ReverseMap();
+            CreateMap<Usuario, LoginVM>().ReverseMap();
         }
     }
 }

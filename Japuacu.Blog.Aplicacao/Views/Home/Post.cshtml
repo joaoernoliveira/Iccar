@@ -2,108 +2,156 @@
 @{
     ViewData["Title"] = "Post";
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 
+<!-- Page Content -->
+<div class="container">
 
-    <!-- Page Content -->
-    <div class="container">
+    <div class="row">
 
-        <div class="row">
+        <!-- Sidebar Widgets Column -->
+        <!-- Post Content Column -->
+        <div class="col-lg-12">
 
-            <!-- Sidebar Widgets Column -->
-             <!-- Post Content Column -->
-            <div class="col-lg-12">
+            <!-- Title -->
+            <h1 class="mt-4">@Model.TituloPost</h1>
 
-                <!-- Title -->
-                <h1 class="mt-4">@Model.TituloPost</h1>
+            <!-- Author -->
+            <p class="lead">
+                por
+                <a href="#">@Model.Autor.Nome</a>
+            </p>
 
-                <!-- Author -->
-                <p class="lead">
-                    por
-                    <a href="#">@Model.Autor.Nome</a>
-                </p>
+            <hr>
 
-                <hr>
+            <!-- Date/Time -->
+            <p>Postado em 01/01/2019 as 12:00 </p>
 
-                <!-- Date/Time -->
-                <p>Postado em 01/01/2019 as 12:00 </p>
+            <hr>
 
-                <hr>
+            <!-- Preview Image -->
+            <img class="img-fluid rounded" src="~/Imagens/port03.jpg" alt="">
 
-                <!-- Preview Image -->
-                <img class="img-fluid rounded" src="~/Imagens/port03.jpg" alt="">
+            <hr>
+            <p class="lead">@Model.ResumoPost</p>
 
-                <hr>
-                <p class="lead">@Model.ResumoPost</p>
+            @foreach (var item in Model.Paragrafo)
 
-                @foreach (var item in Model.Paragrafo)
-                {
-                    <p>@item.Redacao</p>
+            {
+                <p>@item.Redacao</p>
 
+            }
+            <!-- Post Content -->
 
-                }
-                <!-- Post Content -->
+            <input id="comentar" type="button" value="Comentar" class="btn btn-link" />
+            <hr>
 
+            <!-- Comments Form -->
+            <div id="Comentarios" class="card my-4">
+                <h5 class="card-header">Comentário:</h5>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" rows="3">
+                        </div>
 
-                <hr>
+                        <div class="form-group">
+                            <label>Comentário</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
 
-                <!-- Comments Form -->
-                <div class="card my-4">
-                    <h5 class="card-header">Comentário:</h5>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" class="form-control" rows="3"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Comentário</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
                 </div>
-
-                <br />
-
-                <!-- Single Comment -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Ciclano</h5>
-                        Isso é o Rugby.
-                    </div>
-                </div>
-
-
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Beltrano</h5>
-                        Parabéns pela iniciativa.
-                    </div>
-                </div>
-
-                <!-- Comment with nested comments -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Diretoria Japuaçu</h5>
-                        Obrigado.
-                    </div>
-                </div>
-
             </div>
 
+            <br />
 
+            <!-- Single Comment -->
+            @foreach (var item in Model.Comentario)
+            {
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="media-body">
+                        <h5 class="mt-0">@item.Nome </h5>
+                        <P> @item.Redacao </P>
+                        <small> Em: @item.DataComentario</small>
+
+                    </div>
+                </div>
+
+            }
 
         </div>
-        <!-- /.row -->
+
+
 
     </div>
+    <!-- /.row -->
 
+</div>
 
+@section Scripts {
+
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+
+    <script>
+        $('#Nome').prop("disabled", true);
+        $('#Comentarios').hide();
+
+        function Imagem(urlImagem) {
+            var local = urlImagem;
+            FB.api(
+                local,
+                'GET',
+                {},
+                function (response) {
+                    $('#Avatar').attr("src", response.data.url);
+                    $("#ImagemNovo").val(response.data.url);
+                }
+            );
+        }
+
+        $("#comentar").click(function () {
+            var id_figura = '0';
+            var chamado_figura = 'picture';
+
+            FB.init({
+                appId: '3223018264381413',
+                status: true,
+                xfbml: true,
+                version: 'v1.0' // or v2.6, v2.5, v2.4, v2.3
+            });
+
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    FB.api('/me', function (response) {
+                        $("#Nome").val(response.name);
+                        $("#NomeNovo").val(response.name);
+                        id_figura = response.id;
+                        $("#IdNovo").val(response.id);
+                        chamado_figura = '/' + id_figura + '/picture?redirect=false';
+                        Imagem(chamado_figura);
+                        $("#Comentarios").show();
+                    });
+                }
+                else {
+                    alert('Somente pessoas autenticadas podem comentar.');
+                }
+
+            });
+
+        });
+
+        $("#enviar").click(function () {
+            $("#Comentarios").Hide();
+        });
+
+    </script>
+
+}
 

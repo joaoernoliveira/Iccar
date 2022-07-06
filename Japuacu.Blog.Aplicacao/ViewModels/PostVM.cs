@@ -35,6 +35,7 @@ namespace Japuacu.Blog.Aplicacao.ViewModels
         public virtual AutorVM Autor { get; set; }
         public virtual ICollection<ComentarioVM> Comentario { get; set; }
         public virtual ICollection<ParagrafoVM> Paragrafo { get; set; }
+        public List<string> anteriores { get; set; }
 
     }
 }
